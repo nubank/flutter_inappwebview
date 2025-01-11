@@ -11,6 +11,7 @@ import 'pull_to_refresh/main.dart';
 import 'web_message/main.dart';
 import 'web_storage/main.dart';
 import 'web_authentication_session/main.dart';
+import 'proxy_controller.dart';
 
 /// Implementation of [InAppWebViewPlatform] using the WebKit API.
 class IOSInAppWebViewPlatform extends InAppWebViewPlatform {
@@ -150,7 +151,7 @@ class IOSInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [IOSWebStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [IOSWebStorage] in `flutter_inappwebview` instead.
+  /// Look at using [WebStorage] in `flutter_inappwebview` instead.
   @override
   IOSWebStorage createPlatformWebStorage(
     PlatformWebStorageCreationParams params,
@@ -161,7 +162,7 @@ class IOSInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [IOSLocalStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [IOSLocalStorage] in `flutter_inappwebview` instead.
+  /// Look at using [LocalStorage] in `flutter_inappwebview` instead.
   @override
   IOSLocalStorage createPlatformLocalStorage(
     PlatformLocalStorageCreationParams params,
@@ -172,7 +173,7 @@ class IOSInAppWebViewPlatform extends InAppWebViewPlatform {
   /// Creates a new [IOSSessionStorage].
   ///
   /// This function should only be called by the app-facing package.
-  /// Look at using [PlatformSessionStorage] in `flutter_inappwebview` instead.
+  /// Look at using [SessionStorage] in `flutter_inappwebview` instead.
   @override
   IOSSessionStorage createPlatformSessionStorage(
     PlatformSessionStorageCreationParams params,
@@ -269,5 +270,14 @@ class IOSInAppWebViewPlatform extends InAppWebViewPlatform {
   @override
   IOSWebAuthenticationSession createPlatformWebAuthenticationSessionStatic() {
     return IOSWebAuthenticationSession.static();
+  }
+
+  /// Creates a new [IOSProxyController].
+  ///
+  /// This function should only be called by the app-facing package.
+  /// Look at using [ProxyController] in `flutter_inappwebview` instead.
+  @override
+  PlatformProxyController createPlatformProxyController(PlatformProxyControllerCreationParams params) {
+    return IOSProxyController(params);
   }
 }
